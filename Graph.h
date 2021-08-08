@@ -1,26 +1,30 @@
+#ifndef ALGO_GRAPH_H
+#define ALGO_GRAPH_H
 #include "AdjacentList.h"
 #include "Queue.h"
 
 class Graph {
-    class Vertex{
+
+public:
+    class Vertex {
         AdjacentList list;
         int value;
     public:
-        int getValue() const;
-
-        void setValue(int value);
+        void setValue(int _value){value=_value;};
+        void AddNeighbor(int neighbor_value){list.pushBack(list.CreateNode(neighbor_value));};
+        int getLastNeighborAdded(){return list.getTailVal();};
     };
 
 public:
-    Vertex* vertexArray;
-    int numberOfVertex;
+    Vertex *vertexArray;
+    int numberOfVertex ;
 
 public:
     Graph() {vertexArray = nullptr;}
     void makeEmptyGraph(int size);
     bool isAdjacent(int uVertex, int vVertex);
     AdjacentList getAdjList (int uVertex);
-    int addEdge(int uVertex, int vVertex);
+    int addEdge(Vertex& uVertex, int vVertex_val);
     void removeEdge(int uVertex, int vVertex);
     void readGraph();
     void printGraph();

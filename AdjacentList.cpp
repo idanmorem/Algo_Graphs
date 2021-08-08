@@ -1,5 +1,17 @@
-//
-// Created by Snir Gueta on 08/08/2021.
-//
-
 #include "AdjacentList.h"
+
+
+void AdjacentList::pushBack(ListNode* n) {
+    if(!head )
+    {
+        head = n;
+        return;
+    }
+    else
+    {
+        tail->setNext(n);
+        tail = n;
+    }
+}
+
+

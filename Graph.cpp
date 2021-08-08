@@ -17,7 +17,7 @@ Q.Enqueue(v)
 
 void Graph::makeEmptyGraph(int size)
 {
-    vertexArray = new Vertex[size + 1];
+    vertexArray = new Vertex[size + 1] ;
     numberOfVertex = size;
     for(int i = 1; i <= size; i++)
     {
@@ -25,10 +25,49 @@ void Graph::makeEmptyGraph(int size)
     }
 }
 
-int Graph::Vertex::getValue() const {
-    return value;
+bool Graph::isAdjacent(int uVertex, int vVertex) {
+    return false;
 }
 
-void Graph::Vertex::setValue(int value) {
-    Vertex::value = value;
+AdjacentList Graph::getAdjList(int uVertex) {
+    return AdjacentList();
+}
+
+
+// need to return 1 if added else return 0
+int Graph::addEdge(Vertex& uVertex, int vVertex_val) {
+
+    uVertex.AddNeighbor(vVertex_val);
+    if(uVertex.getLastNeighborAdded() != vVertex_val)
+        return 0;
+    else
+        return 1;
+}
+
+void Graph::removeEdge(int uVertex, int vVertex) {
+
+}
+
+void Graph::readGraph() {
+
+}
+
+void Graph::printGraph() {
+
+}
+
+int Graph::isEmpty() {
+    return 0;
+}
+
+int *Graph::BFS() {
+    return nullptr;
+}
+
+Graph Graph::shotrestPathGraph(Graph g, Vertex s, Vertex t) {
+    return Graph();
+}
+
+void Graph::givenFunc() {
+
 }
