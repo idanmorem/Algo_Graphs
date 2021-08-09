@@ -16,12 +16,6 @@ public:
         int getLastNeighborAdded(){return list.getTailVal();};
         int getValue() const { return value; };
         friend Graph;
-        AdjacentList getAdjList() { return list;}
-        Vertex(int _value = 0)
-        {
-            value = _value;
-
-        }
     };
 
 public:
@@ -30,15 +24,15 @@ public:
 
 public:
     Graph() {vertexArray = nullptr;}
-    void makeEmptyGraph(int size);
+    void makeEmptyGraph(int size); // DONE
+    AdjacentList getAdjList (int uVertex){return vertexArray[uVertex].list;}; // DONE
+    int* BFS(Vertex& s); // DONE
+    int addEdge(Vertex& uVertex, int vVertex_val); // DONE
     bool isAdjacent(int uVertex, int vVertex);
-    AdjacentList getAdjList (int uVertex);
-    int addEdge(Vertex& uVertex, int vVertex_val);
     void removeEdge(int uVertex, int vVertex);
     void readGraph();
     void printGraph();
     int isEmpty();
-    int* BFS(Vertex& s); //Snir
     Graph shotrestPathGraph(Graph g, Vertex s, Vertex t);
     void givenFunc(); //measuring algorithm time
 };

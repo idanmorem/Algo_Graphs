@@ -2,21 +2,6 @@
 
 
 
-/*
- BFS(Graph G, Vertex s)
-Queue Q
-for each vertex v do
-d[v] ← ∞
-Q.Enqueue(s)
-d[s] ← 0
-while Q ≠ ∅ do
-u ← Q.Dequeue()
-for each v ∈Adj[u] do
-if d[v] = ∞ then
-d[v] ← d[u] + 1
-Q.Enqueue(v)
- */
-
 void Graph::makeEmptyGraph(int size)
 {
     vertexArray = new Vertex[size + 1] ;
@@ -30,11 +15,6 @@ void Graph::makeEmptyGraph(int size)
 bool Graph::isAdjacent(int uVertex, int vVertex) {
     return false;
 }
-
-AdjacentList Graph::getAdjList(int uVertex) {
-    return AdjacentList();
-}
-
 
 // need to return 1 if added else return 0
 int Graph::addEdge(Vertex& uVertex, int vVertex_val) {
@@ -62,6 +42,7 @@ int Graph::isEmpty() {
     return 0;
 }
 
+
 int* Graph::BFS(Vertex& s)
 {
     int *d = new int[numberOfVertex + 1];
@@ -77,7 +58,7 @@ int* Graph::BFS(Vertex& s)
     while (!Q.isEmpty())
     {
         u = Q.dequeue();
-        AdjacentList::ListNode *curr = vertexArray[u].getAdjList().getHead();
+        AdjacentList::ListNode *curr = getAdjList(u).getHead();
 
         while (curr != nullptr) {
             v = curr->getVal();

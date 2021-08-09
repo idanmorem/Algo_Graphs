@@ -15,9 +15,9 @@ int main()
     for ( int i = 1; i <= 5 ; i++)
     {
         if(res[i] != INFINITY )
-            cout << "The length of path to vertex " << g.vertexArray[i].getValue() << "   IS: " << res[i]  << endl;
+            cout << "Shortest Path to Vertex _" << g.vertexArray[i].getValue() << "_ == " << res[i]  << endl;
         else
-            cout << "There is no path to vertex " << g.vertexArray[i].getValue() << endl;
+            cout << "No path to Vertex _" << g.vertexArray[i].getValue() << "_" << endl;
     }
 
 }
