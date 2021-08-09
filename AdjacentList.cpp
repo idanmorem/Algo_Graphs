@@ -5,6 +5,7 @@ void AdjacentList::pushBack(ListNode* n) {
     if(!head )
     {
         head = n;
+        tail = n;
         return;
     }
     else
