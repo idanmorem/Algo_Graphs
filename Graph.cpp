@@ -1,5 +1,7 @@
 #include "Graph.h"
 
+
+
 /*
  BFS(Graph G, Vertex s)
 Queue Q
@@ -60,9 +62,35 @@ int Graph::isEmpty() {
     return 0;
 }
 
-int *Graph::BFS() {
-    return nullptr;
+int* Graph::BFS(Vertex& s)
+{
+    int *d = new int[numberOfVertex + 1];
+    Queue Q(numberOfVertex);
+    int u, v;
+
+    for (v = 1; v <= numberOfVertex; v++)
+        d[v] = INFINITY;
+
+    Q.enqueue(s.getValue());
+    d[s.getValue()] = 0;
+
+    while (!Q.isEmpty())
+    {
+        u = Q.dequeue();
+        AdjacentList::ListNode *curr = vertexArray[u].getAdjList().getHead();
+
+        while (curr != nullptr) {
+            v = curr->getVal();
+            if (d[v] == INFINITY) {
+                d[v] = d[u] + 1;
+                Q.enqueue(v);
+            }
+            curr = curr->getNext();
+        }
+    }
+    return d;
 }
+
 
 Graph Graph::shotrestPathGraph(Graph g, Vertex s, Vertex t) {
     return Graph();

@@ -6,13 +6,19 @@ void AdjacentList::pushBack(ListNode* n) {
     {
         head = n;
         tail = n;
+        size++;
         return;
     }
     else
     {
         tail->setNext(n);
         tail = n;
+        size++;
     }
+}
+
+AdjacentList::ListNode *AdjacentList::getHead() const {
+    return head;
 }
 
 
