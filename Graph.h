@@ -28,12 +28,12 @@ public:
     AdjacentList getAdjList (int uVertex){return vertexArray[uVertex].list;}; // DONE
     int* BFS(Vertex& s); // DONE
     int addEdge(Vertex& uVertex, int vVertex_val); // DONE
-    bool isAdjacent(int uVertex, int vVertex);
-    void removeEdge(int uVertex, int vVertex);
-    void readGraph();
-    void printGraph();
-    int isEmpty();
-    Graph shotrestPathGraph(Graph g, Vertex s, Vertex t);
+    bool isAdjacent(int uVertex, int vVertex); // DONE - Check Needed
+    void removeEdge(int uVertex, int vVertex); // DONE - Check Needed
+    void readGraph(); //
+    void printGraph(); // DONE
+    int isEmpty();//  DONE
+    static Graph shotrestPathGraph(Graph g, int s, int t);
     void givenFunc(); //measuring algorithm time
 
     Graph BuildTransposeGraph();

@@ -5,12 +5,12 @@ Graph Graph::BuildTransposeGraph()
 {
     int u,v;
     Graph gs_t;
-    gs_t.makeEmptyGraph(this->numberOfVertex);
+    gs_t.makeEmptyGraph(numberOfVertex);
 
-    for( u = 1 ; u <= this->numberOfVertex ; u++)
+    for( u = 1 ; u <= numberOfVertex ; u++)
     {
         // Get the Adjacent list of u vertex
-        AdjacentList::ListNode *currNeighborVertex = this->getAdjList(u).getHead();
+        AdjacentList::ListNode *currNeighborVertex = getAdjList(u).getHead();
 
         // Run over the adjacent list of u and for each neighbor v:  add edge (v,u)  v --> u
         while( currNeighborVertex != nullptr )
@@ -19,7 +19,7 @@ Graph Graph::BuildTransposeGraph()
             v = currNeighborVertex->getVal();
 
             // add edge (v,u) to Gs_T
-            gs_t.addEdge(this->vertexArray[v],u);
+            gs_t.addEdge(vertexArray[v],u);
 
             // step forward to the next neighbor
             currNeighborVertex = currNeighborVertex->getNext();
@@ -100,8 +100,50 @@ int* Graph::BFS(Vertex& s)
 }
 
 
-Graph Graph::shotrestPathGraph(Graph g, Vertex s, Vertex t) {
-    return Graph();
+Graph Graph::shotrestPathGraph(Graph g, int s, int t) {
+
+    int v,u;
+    // Stage 1: Activate BFS algorithm on G graph
+    int* d = g.BFS(g.vertexArray[s]);
+    for ( int i = 1; i <= g.numberOfVertex ; i++) {
+        if(d[i] != INFINITY )
+            cout << "Shortest Path to Vertex _" << g.vertexArray[i].getValue() << "_ == " << d[i]  << endl;
+        else
+            cout << "No path to Vertex _" << g.vertexArray[i].getValue() << "_" << endl;
+    }
+
+    // Stage 2 - Delete every edge (u,v) that doesn't make the condition: d[v] = d[u] + 1
+    // The graph after the deletion will be called: Gs
+
+    for( u = 1 ; u <= g.numberOfVertex ; u++) {
+        // Get the Adjacent list of u vertex
+        AdjacentList::ListNode *currNeighborVertex = g.getAdjList(u).getHead();
+
+        // Run over the adjacent list and for each neighbor v, check if d[v] = d[u] + 1
+        while( currNeighborVertex != nullptr )
+        {
+            v = currNeighborVertex->getVal();
+            // if d[v] != d[u] + 1 then remove the edge (u,v)
+            if( d[v] != (d[u] + 1) )
+                g.removeEdge(u,v);
+
+            // step forward to the next neighbor
+            currNeighborVertex = currNeighborVertex->getNext();
+        }
+    }
+    // Stage 3 - Build the transpose graph of Gs: Gs_T
+    Graph gs_t = g.BuildTransposeGraph();
+
+    // Stage 4 - 4.a Activate BFS on GsT when the source vertex is 't'
+    int* dt = gs_t.BFS(gs_t.vertexArray[t]);
+    // 4.b Delete all edges that doesn't accessible from 't' vertex  TODO: CHECK HOW TO DO 4.b
+    // -------
+    // Gs_T after the represent : H_T Graph
+
+    // Stage 5 - Return the transpose graph of H_T : H
+    delete d;
+    delete dt;
+    return gs_t.BuildTransposeGraph(); // Return H
 }
 
 void Graph::givenFunc() {
