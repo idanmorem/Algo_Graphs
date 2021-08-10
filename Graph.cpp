@@ -1,6 +1,33 @@
 #include "Graph.h"
 
 
+Graph Graph::BuildTransposeGraph()
+{
+    int u,v;
+    Graph gs_t;
+    gs_t.makeEmptyGraph(this->numberOfVertex);
+
+    for( u = 1 ; u <= this->numberOfVertex ; u++)
+    {
+        // Get the Adjacent list of u vertex
+        AdjacentList::ListNode *currNeighborVertex = this->getAdjList(u).getHead();
+
+        // Run over the adjacent list of u and for each neighbor v:  add edge (v,u)  v --> u
+        while( currNeighborVertex != nullptr )
+        {
+            // get v value, the neighbor of u
+            v = currNeighborVertex->getVal();
+
+            // add edge (v,u) to Gs_T
+            gs_t.addEdge(this->vertexArray[v],u);
+
+            // step forward to the next neighbor
+            currNeighborVertex = currNeighborVertex->getNext();
+        }
+    }
+    return gs_t;
+}
+
 
 void Graph::makeEmptyGraph(int size)
 {

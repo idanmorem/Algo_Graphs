@@ -35,6 +35,8 @@ public:
     int isEmpty();
     Graph shotrestPathGraph(Graph g, Vertex s, Vertex t);
     void givenFunc(); //measuring algorithm time
+
+    Graph BuildTransposeGraph();
 };
 
 
