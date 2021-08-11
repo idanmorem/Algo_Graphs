@@ -3,6 +3,7 @@
 
 int main()
 {
+    /*
     // TEST ONLY
     int t = 5 , s = 1; // source and terminate vertexes values
     Graph g;
@@ -29,6 +30,13 @@ int main()
     // Print the time measuring
 
     return 0;
+     */
+
+    IO io;
+    int i;
+    io.graphDefenitionInput();
+    std::cout << "Done";
+    std::cin >> i;
 }
 
 
