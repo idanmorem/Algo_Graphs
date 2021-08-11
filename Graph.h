@@ -23,19 +23,17 @@ public:
     int numberOfVertex ;
 
 public:
-    Graph() {vertexArray = nullptr;}
+    Graph() {vertexArray = nullptr; numberOfVertex = 0;}
     void makeEmptyGraph(int size); // DONE
     AdjacentList getAdjList (int uVertex){return vertexArray[uVertex].list;}; // DONE
     int* BFS(Vertex& s); // DONE
     int addEdge(Vertex& uVertex, int vVertex_val); // DONE
-    bool isAdjacent(int uVertex, int vVertex); // DONE - Check Needed
-    void removeEdge(int uVertex, int vVertex); // DONE - Check Needed
-    void readGraph(); //
-    void printGraph(); // DONE
-    int isEmpty();//  DONE
+    bool isAdjacent(int uVertex, int vVertex); // TODO
+    void removeEdge(int uVertex, int vVertex); // TODO
+    void readGraph(); // TODO
+    void printGraph(); // TODO: check
+    int isEmpty();// DONE
     static Graph shotrestPathGraph(Graph g, int s, int t);
-    void givenFunc(); //measuring algorithm time
-
     Graph BuildTransposeGraph();
 };
 
