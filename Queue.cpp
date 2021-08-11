@@ -74,4 +74,3 @@ bool Queue::isEmpty() {
 bool Queue::isFull() {
     return (size() == capacity);
 }
-
