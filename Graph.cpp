@@ -62,11 +62,29 @@ void Graph::readGraph() {
 }
 
 void Graph::printGraph() {
-
+    if(isEmpty() == 0)
+    {
+        for(int i = 0; i < numberOfVertex; i++)
+        {
+            AdjacentList::ListNode* currentNode = vertexArray[i].list.getHead();
+            while(currentNode != nullptr)
+            {
+                std::cout << "(" << i << "," << currentNode->getVal() << ") ";
+                currentNode = currentNode->getNext();
+            }
+        }
+    }
+    else
+    {
+        std::cout << "The graph is empty" << std::endl;
+    }
 }
 
 int Graph::isEmpty() {
-    return 0;
+    if(numberOfVertex == 0)
+        return 1;
+    else
+        return 0;
 }
 
 
@@ -146,6 +164,3 @@ Graph Graph::shotrestPathGraph(Graph g, int s, int t) {
     return gs_t.BuildTransposeGraph(); // Return H
 }
 
-void Graph::givenFunc() {
-
-}
