@@ -52,6 +52,10 @@ public:
     void pushBack(ListNode* n);
     int getTailVal(){ return tail->getVal(); };
     ListNode *getHead() const;
+    void deleteNode(ListNode* previousNode);
+    void deleteFromBeginningOfList();
+    void deleteFromEndOfList(ListNode* previousNode);
+    void deleteFromInnerPlaceInList(ListNode* previousNode);
 };
 
 
