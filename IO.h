@@ -10,6 +10,17 @@
 #include <string>
 
 class IO {
+private:
+
+    std::string inputString;
+    int inputNumber;
+    void analyzeDefinitionInput(int* input);
+
+
+public:
+
+    void graphDefenitionInput();
+    void givenFunc();
 
 };
 
